@@ -11,8 +11,15 @@
     </ul>
 
     <div class="col-md-3 text-end">
+<% if (locals.userLogin) { %>
+  <p>Hi, <%= locals.userLogin.name %></p>
+  <a href="/users/logout" class="btn btn-outline-primary me-2">log out</a>
+
+<% }else{ %>
+
       <a href="/users/login" class="btn btn-outline-primary me-2">Login</a>
       <a href="/users/register" class="btn btn-outline-primary me-2">Sign-up</a>
+   <% } %> 
     </div>
   </header>
 </div>

@@ -1,9 +1,15 @@
 const express = require('express');
 const mainController = require('../controllers/main');
 
-const router = express.Router();
+const router
+ = express.Router();
 
-router.get('/', mainController.home);
+router.get('/',
+(req,res, next) => {
+    req.session.userLogin ? res.locals.userLogin = req.session.userLogin:null
+    next()
+}
+,mainController.home);
 router.get('/books/detail/:id', mainController.bookDetail);
 router.get('/books/search', mainController.bookSearch);
 router.post('/books/search', mainController.bookSearchResult);
